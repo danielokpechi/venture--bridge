@@ -127,99 +127,24 @@
 
                     <div class="col-md-9">
 
-                        <div class="blog-post">
+                        <!-- BLOG POSTS -->
+                        <div v-for="post in blogPosts" :key="post._id" class="blog-post">
 
-                            <a href="blog-post.html"><img class="img-carousel post-img" src="assets/img/portfolio-1.jpg"
-                                    alt=""></a>
-
-                            <div class="post-content">
-
-                                <h3><a class="post-title" href="blog-post.html">Is Passion Enough for Business?</a></h3>
-                                <ul class="post-meta list-unstyled">
-                                    <li><a href="#">Startup Culture</a></li>
-                                    <li><a href="#">Feb 12, 2022</a></li>
-                                    <li><a href="blog-post.html#Comments">2 Comments</a></li>
-                                </ul><!-- /.post-meta -->
-
-                                <p class="section-text">Discover how passion, combined with vision and execution, drives
-                                    the success of startups. Learn from the stories of entrepreneurs who turned their
-                                    passions into profitable ventures.</p>
-
-                            </div><!-- /.post-content -->
-
-                        </div><!-- /.blog-post -->
-
-
-                        <div class="blog-post">
-
-                            <div class="post-img-slider">
-                                <img class="img-carousel post-img" src="assets/img/portfolio-5.jpg" alt="">
-                                <img class="img-carousel post-img" src="assets/img/portfolio-2.jpg" alt="">
-                                <img class="img-carousel post-img" src="assets/img/portfolio-3.jpg" alt="">
-                                <img class="img-carousel post-img" src="assets/img/portfolio-4.jpg" alt="">
-                            </div><!-- /.post-img-slider -->
+                            <a :href="'blog-post.html?id=' + post._id">
+                              <img class="img-carousel post-img" src="assets/img/portfolio-1.jpg" alt="">
+                            </a>
 
                             <div class="post-content">
+                              <h3><a class="post-title" :href="'blog-post.html?id=' + post._id">{{ post.title }}</a></h3>
+                              <ul class="post-meta list-unstyled">
+                                <li v-for="tag in post.tags" :key="tag"><a href="#">{{ tag }}</a></li>
+                                <li><a href="#">{{ formatDate(post.date) }}</a></li>
+                                <li><a :href="'blog-post.html?id=' + post._id + '#Comments'">{{ post.comments.length }} Comments</a></li>
+                              </ul>
+                              <p class="section-text">{{ post.content }}</p>
+                            </div>
 
-                                <h3><a class="post-title" href="blog-post-fintech.html">The Future of Fintech:
-                                        Transforming Finance</a></h3>
-                                <ul class="post-meta list-unstyled">
-                                    <li><a href="#">Fintech</a></li>
-                                    <li><a href="#">Mar 10, 2022</a></li>
-                                    <li><a href="blog-post.html#Comments">15 Comments</a></li>
-                                </ul><!-- /.post-meta -->
-
-                                <p class="section-text">Explore how financial technology is reshaping banking,
-                                    investment, and everyday transactions. This article delves into the innovations
-                                    driving the fintech revolution and what it means for startups.</p>
-
-                            </div><!-- /.post-content -->
-
-                        </div><!-- /.blog-post -->
-
-                        <div class="blog-post">
-
-                            <iframe src="https://player.vimeo.com/video/88989456" width="100%" height="420"
-                                allowfullscreen></iframe>
-
-                            <div class="post-content">
-
-                                <h3><a class="post-title" href="blog-post-startup-success.html">Succeeding in the
-                                        Startup World: Key Strategies</a></h3>
-                                <ul class="post-meta list-unstyled">
-                                    <li><a href="#">Entrepreneurship</a></li>
-                                    <li><a href="#">Apr 22, 2022</a></li>
-                                    <li><a href="blog-post.html#Comments">11 Comments</a></li>
-                                </ul><!-- /.post-meta-->
-
-                                <p class="section-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                    eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit
-                                    amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                    dolore magna aliqua.</p><!-- /.section-text -->
-
-                            </div><!-- /.post-content -->
-
-                        </div><!-- /.blog-post -->
-
-                        <div class="blog-post">
-
-                            <div class="post-content mt-0">
-
-                                <h3><a class="post-title" href="blog-post-startup-success.html">Succeeding in the
-                                        Startup World: Key Strategies</a></h3>
-                                <ul class="post-meta list-unstyled">
-                                    <li><a href="#">Entrepreneurship</a></li>
-                                    <li><a href="#">Apr 22, 2022</a></li>
-                                    <li><a href="blog-post.html#Comments">15 Comments</a></li>
-                                </ul><!-- /.post-meta -->
-
-                                <p class="section-text">Discover the strategies that successful startups use to navigate
-                                    the competitive landscape. This post covers everything from securing funding to
-                                    scaling your business effectively.</p>
-
-                            </div><!-- /.post-content -->
-
-                        </div><!-- /.blog-post -->
+                        </div>
 
 
                         <div class="text-center">
@@ -269,43 +194,18 @@
                                 <h4 class="widget-title">Latest Posts</h4>
 
                                 <ul class="list-unstyled posts-list">
-                                    <li>
-                                        <a href="blog-post.html">
-                                            <div class="widget-thumb">
-                                                <img class="img-carousel" src="assets/img/portfolio-7.jpg" alt="">
-                                            </div>
-                                            <div class="widget-post-info">
-                                                <h4 class="widget-post-title">Business Perfect is the best Free Theme
-                                                </h4>
-                                                <p class="widget-post-date">Sep 25, 2015</p>
-                                            </div><!-- /.widget-post-info -->
+                                    <li v-for="post in blogPosts" :key="post._id" class="latest-post">
+                                        <a :href="'blog-post.html?id=' + post._id">
+                                          <div class="widget-thumb">
+                                            <img class="img-carousel" src="assets/img/portfolio-7.jpg" alt="">
+                                          </div>
+                                          <div class="widget-post-info">
+                                            <h4 class="widget-post-title">{{ post.title }}</h4>
+                                            <p class="widget-post-date">{{ formatDate(post.date) }}</p>
+                                          </div><!-- /.widget-post-info -->
                                         </a>
-                                    </li><!-- /.latest-post -->
+                                      </li><!-- /.latest-post -->
 
-                                    <li>
-                                        <a href="blog-post.html">
-                                            <div class="widget-thumb">
-                                                <img class="img-carousel" src="assets/img/portfolio-8.jpg" alt="">
-                                            </div>
-                                            <div class="widget-post-info">
-                                                <h4 class="widget-post-title">We provide unique solutions</h4>
-                                                <p class="widget-post-date">Sep 23, 2015</p>
-                                            </div><!-- /.widget-post-info -->
-
-                                        </a>
-                                    </li><!-- /.latest-post -->
-
-                                    <li>
-                                        <a href="blog-post.html">
-                                            <div class="widget-thumb">
-                                                <img class="img-carousel" src="assets/img/portfolio-9.jpg" alt="">
-                                            </div>
-                                            <div class="widget-post-info">
-                                                <h4 class="widget-post-title">We are creative minds</h4>
-                                                <p class="widget-post-date">Sep 22, 2015</p>
-                                            </div><!-- /.widget-post-info -->
-                                        </a>
-                                    </li><!-- /.latest-post -->
                                 </ul>
                             </div><!-- /.widget-latest-posts -->
 
@@ -443,6 +343,9 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js" integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery.slicknav.min.js"></script>
@@ -451,6 +354,40 @@
     <script src="assets/js/skrollr.min.js"></script>
     <script src="assets/js/jquery.countTo.min.js"></script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/api.js"></script>
+
+
+
+    <script>
+        const app = new Vue({
+          el: '#main',
+          data: {
+            blogPosts: [] // Initialize an empty array to store blog posts
+          },
+          mounted() {
+            // Fetch blog posts from the custom function when the Vue app is mounted
+            this.fetchBlogPosts();
+          },
+          methods: {
+            fetchBlogPosts() {
+              // Use the custom function to retrieve blog posts
+              getAllBlogs()
+                .then(posts => {
+                    console.log(posts.map(p => p._id))
+                  this.blogPosts = posts; // Assign fetched blog posts to the data property
+                })
+                .catch(error => {
+                  console.error('Error fetching blog posts:', error);
+                });
+            },
+            formatDate(date) {
+              // Implement a function to format the date as needed
+              return new Date(date).toLocaleDateString();
+            }
+          }
+        });
+      </script>
+      
 
 </body>
 
