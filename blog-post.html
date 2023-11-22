@@ -484,7 +484,7 @@
                 .then(response => {
                     // Handle successful response
                     console.log('Comment posted:', response);
-                    blogPost.comments.push(response)
+                    this.blogPost.comments.push(response)
                     // Optionally, you can update the comments section or take any other action
                 })
                 .catch(error => {
