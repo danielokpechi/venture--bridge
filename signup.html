@@ -121,14 +121,19 @@
                         <form class="form-horizontal my-90" @submit.prevent="signUpFunc">
                         <h3 class="section-title-small text-center mb-50">Sign-up</h3>
                         <div class="row">
+
+
                             <div class="col-sm-12">
-                                <input class="form-control" v-model="formBody.first_name" type="" name="contact-email" placeholder="First-name *" required>
+                                <input class="form-control" v-model="formBody.startup_name" type="" name="contact-startup-name" placeholder="Startup Name *" required>
                             </div>
                             <div class="col-sm-12">
-                                <input class="form-control" v-model="formBody.last_name" type="" name="contact-email" placeholder="Last-name *" required>
+                                <input class="form-control" v-model="formBody.startup_field" type="" name="contact-startup-field" placeholder="Startup Field *" required>
                             </div>
                             <div class="col-sm-12">
                                 <input class="form-control" v-model="formBody.email" type="email" name="contact-email" placeholder="E-mail *" required>
+                            </div>
+                            <div class="col-sm-12">
+                                <input class="form-control" v-model="formBody.phone" type="phone" name="contact-phone" placeholder="Phone Number *" required>
                             </div>
                             <div class="col-sm-12">
                                 <input class="form-control" v-model="formBody.password" type="password" name="contact-password" placeholder="Password *" required>
@@ -280,11 +285,12 @@
         el: '#main',
         data: {
           formBody: { // Object to store form input for contact submission
-            first_name: '',
-            last_name: '',
+            startup_name: '',
+            startup_field: '',
             email: '',
             password: '',
-            confirm_password: ''
+            confirm_password: '',
+            phone: ''
           },
           loginSuccess: null
 
@@ -297,11 +303,9 @@
     
             // Example: This simply logs the form data in the console
 
-            const name = this.formBody.first_name + ' ' + this.formBody.last_name
+            const {startup_name, startup_field, email, phone, password} = this.formBody
 
-            const {email, password} = this.formBody
-
-            signUp({name, email, password})
+            signUp({startup_name, startup_field, email, phone, password})
             .then(response => {
 
                 if (response) {

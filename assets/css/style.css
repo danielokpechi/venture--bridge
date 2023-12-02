@@ -2037,3 +2037,72 @@ a.post-title:hover,
   color: #ffd500;
   text-decoration: underline;
 }
+
+body.admin-page {
+  font-family: Arial, sans-serif;
+  background-color: white;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-container {
+  width: 80%;
+  margin: 0 auto;
+  /* background-color: #ffffe0;  */
+  /* Light yellow background */
+}
+
+.admin-container h1 {
+  text-align: center;
+  color: #333;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.admin-table, .admin-table th, .admin-table td {
+  border: 1px solid #ddd;
+}
+
+.admin-table th, .admin-table td {
+  text-align: left;
+  padding: 8px;
+}
+
+.admin-table th {
+  background-color: #fdd835; /* Yellow background for headers */
+  color: white;
+}
+
+.admin-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.admin-table tr:hover {
+  background-color: #ddd;
+}
+.admin-container {
+  padding-top: 100px; /* Adjust this value based on the height of your navbar */
+  padding-bottom: 100px; /* Adjust this value based on the height of your navbar */
+  /* Other styles */
+}
+.btn-accept, .btn-decline {
+  padding: 5px 10px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.btn-accept {
+  background-color: #28a745; /* Green */
+}
+
+.btn-decline {
+  background-color: #dc3545; /* Red */
+}

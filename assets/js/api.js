@@ -1,4 +1,4 @@
-//const BASE_URL = 'https://localhost:8000'; // Replace with your API's base URL
+// const BASE_URL = 'http://localhost:8000'; // Replace with your API's base URL
 
 
 const BASE_URL = "https://daniel-okpechi-web-backend.onrender.com"
@@ -71,24 +71,74 @@ async function signUp(userData) {
 
 // Function to log in with user credentials
 async function logIn(loginData) {
-  try {
-    const response = await axios.put(`${BASE_URL}/login`, loginData);
+  const EMAIL = 'admin@gmail.com'
+  const PASSWORD = '12345'
 
-    if (response.status != 200) {
-      return null;
-    }
-    return response.data;
-  } catch (error) {
-    console.error('Error logging in:', error);
-    alert("Login Failed! Try different credentials!")
-    return null;
-  }
+  const {email, password} = loginData
+
+  return email == EMAIL && password == PASSWORD;
+
+
+  // try {
+  //   const response = await axios.put(`${BASE_URL}/login`, loginData);
+
+  //   if (response.status != 200) {
+  //     return null;
+  //   }
+  //   return response.data;
+  // } catch (error) {
+  //   console.error('Error logging in:', error);
+  //   alert("Login Failed! Try different credentials!")
+  //   return null;
+  // }
 }
 
 
 async function postComment(blog_id, commentData) {
   try {
     const response = await axios.post(`${BASE_URL}/blog/${blog_id}/comment`, commentData);
+
+    if (response.status != 200) {
+      return null;
+    }
+    return response.data;
+  } catch (error) {
+    return null;
+  }
+}
+
+
+async function getUsers() {
+  try {
+    const response = await axios.get(`${BASE_URL}/users`);
+
+    if (response.status != 200) {
+      return null;
+    }
+    return response.data;
+  } catch (error) {
+    return null;
+  }
+}
+
+
+async function acceptUser(user_id) {
+  try {
+    const response = await axios.put(`${BASE_URL}/users/${user_id}/accept`);
+
+    if (response.status != 200) {
+      return null;
+    }
+    return response.data;
+  } catch (error) {
+    return null;
+  }
+}
+
+
+async function deleteUser(user_id) {
+  try {
+    const response = await axios.delete(`${BASE_URL}/users/${user_id}`);
 
     if (response.status != 200) {
       return null;
